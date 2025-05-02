@@ -1,11 +1,11 @@
 "use server"
 
 import {auth} from "@clerk/nextjs/server";
-import prisma from "@/lib/prisma";
+import {prisma} from "@/lib/prisma";
 import {WorkflowStatus} from "@/types/workflow";
 
 export async function updateWorkflow({id,defination}:{id:string,defination:string}) {
-    const {userId} =await auth();
+    const {userId} = auth();
     if(!userId){
         throw new Error("unauthorized");
     }
